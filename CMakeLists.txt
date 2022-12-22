@@ -10,6 +10,7 @@ project(turtlesim_football)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  turtlesim
 )
 
 ## System dependencies are found with CMake's conventions
@@ -133,6 +134,26 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/turtlesim_football_node.cpp)
+add_executable(prepare_environment_with_goalkeeper src/prepare_environment_with_goalkeeper.cpp)
+add_dependencies(prepare_environment_with_goalkeeper ${prepare_environment_with_goalkeeper_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(prepare_environment_with_goalkeeper
+   ${catkin_LIBRARIES})
+   
+add_executable(prepare_environment_without_goalkeeper src/prepare_environment_without_goalkeeper.cpp)
+add_dependencies(prepare_environment_without_goalkeeper ${prepare_environment_without_goalkeeper_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(prepare_environment_without_goalkeeper
+   ${catkin_LIBRARIES})
+   
+   
+add_executable(turtlesim_football_run_with_goalkeeper src/turtlesim_football_run_with_goalkeeper.cpp)
+add_dependencies(turtlesim_football_run_with_goalkeeper ${turtlesim_football_run_with_goalkeeper_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(turtlesim_football_run_with_goalkeeper
+   ${catkin_LIBRARIES})
+   
+add_executable(turtlesim_football_run_without_goalkeeper src/turtlesim_football_run_without_goalkeeper.cpp)
+add_dependencies(turtlesim_football_run_without_goalkeeper ${turtlesim_football_run_without_goalkeeper_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(turtlesim_football_run_without_goalkeeper
+   ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
