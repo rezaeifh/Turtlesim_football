@@ -1,0 +1,8 @@
+<launch>
+
+    <node pkg = "turtlesim" type = "turtlesim_node" name = "turtlesim_node" output = "screen" />
+    <node pkg = "turtlesim_football" type = "prepare_environment_without_goalkeeper" name = "prepare_environment" output = "screen" />
+    <node pkg = "turtlesim_football" type = "turtlesim_football_run_without_goalkeeper" name = "turtlesim_game" output = "screen" />
+    
+</launch>
+
